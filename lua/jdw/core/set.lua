@@ -18,7 +18,7 @@ vim.o.scrolloff = 12
 vim.opt.cc = "90"
 vim.opt.signcolumn = "yes"
 
-vim.opt.listchars = { multispace = "    |", tab = "  |", trail = ".", extends = ">", precedes = "<" }
+vim.opt.listchars = { multispace = string.rep("-", vim.api.nvim_get_option('tabstop') - 1) .. ">", tab = "|--", trail = ".", extends = ">", precedes = "<" }
 vim.opt.list = true
 
 vim.opt.ignorecase = true

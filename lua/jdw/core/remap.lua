@@ -13,6 +13,8 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("v", "<leader>p", "\"_dP")
 
+vim.keymap.set({"n", "v"}, "<leader>ts", ":s/	/" .. string.rep(" ", vim.api.nvim_get_option('tabstop')) .. "/g<CR>")
+
 vim.keymap.set("v", "<C-C>", "\"+y")
 
 vim.keymap.set({"n", "i"}, "<C-S-K>", function() vim.lsp.buf.signature_help() end)
