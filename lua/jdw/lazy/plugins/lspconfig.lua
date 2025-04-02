@@ -2,14 +2,12 @@ return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
     { "antosha417/nvim-lsp-file-operations", config = true },
     { "folke/neodev.nvim", opts = {} },
   },
   config = function()
     local lspconfig = require("lspconfig")
     local mason_lspconfig = require("mason-lspconfig")
-    local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
     local keymap = vim.keymap
 
@@ -18,7 +16,6 @@ return {
       callback = function(ev)
         local opts = { buffer = ev.buf, silent = true }
 
-        -- set keybinds
         opts.desc = "Show LSP references"
         keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
 
@@ -63,7 +60,7 @@ return {
     })
 
     -- used to enable autocompletion (assign to every lsp server config)
-    local capabilities = cmp_nvim_lsp.default_capabilities()
+    local capabilities = require("blink.cmp").get_lsp_capabilities()-- cmp_nvim_lsp.default_capabilities()
 
     local signs = { Error = "X", Warn = "!", Hint = "?", Info = "-" }
     for type, icon in pairs(signs) do
@@ -71,6 +68,7 @@ return {
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
 
+    -- C# specific
     local pid = vim.fn.getpid()
     local omnisharp_bin = "/usr/local/bin/omnisharp-roslyn/OmniSharp"
 
