@@ -36,11 +36,11 @@ return {
     telescope.load_extension("fzf")
 
     vim.keymap.set("n", "<leader>ff", builtin.find_files)
-    vim.keymap.set("n", "<leader>fh",builtin.help_tags)
-    vim.keymap.set("n", "<leader>fl",builtin.live_grep)
+    vim.keymap.set("n", "<leader>fh", builtin.help_tags)
+    vim.keymap.set("n", "<leader>fl", builtin.live_grep)
     vim.keymap.set("n", "<leader>en", function()
       builtin.find_files({
-        cmd = vim.fn.stdpath("config")
+        cwd = vim.fn.stdpath("config")
       })
     end)
   end

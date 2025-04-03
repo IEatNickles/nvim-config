@@ -15,4 +15,4 @@ vim.keymap.set("v", "<leader>p", "\"_dP")
 
 vim.keymap.set({"n", "v"}, "<leader>ts", ":retab<CR>")
 
-vim.keymap.set("v", "<C-C>", "\"+y")
+vim.keymap.set("v", "Y", "\"+y")

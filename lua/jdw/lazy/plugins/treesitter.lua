@@ -7,7 +7,7 @@ return {
       auto_install = false,
       highlight = {
         enable = true,
-      }
+      },
     })
   end
 }

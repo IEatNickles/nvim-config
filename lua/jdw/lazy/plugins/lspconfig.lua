@@ -50,7 +50,7 @@ return {
         keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 
         opts.desc = "Show documentation for what is under cursor"
-        keymap.set("n", "K", vim.lsp.buf.hover, opts)
+        keymap.set("n", "K", require("pretty_hover").hover, opts)
 
         keymap.set("n", "<leader>K", vim.lsp.buf.signature_help, opts)
 
@@ -75,6 +75,9 @@ return {
     lspconfig.omnisharp.setup{
         cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) },
     }
+    ----------
+
+    vim.g.rust_recommended_style = 0
 
     mason_lspconfig.setup_handlers({
       function(server_name)
